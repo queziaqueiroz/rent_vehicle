@@ -22,9 +22,7 @@ public class RenterController {
 }
     @PostMapping()
     public ResponseEntity <?> postRenter(@RequestBody Renter renter){
-        Renter newRenter = RenterRepository.save(renter);
+        Renter newRenter = renterRepository.save(renter);
         return ResponseEntity.status(HttpStatus.CREATED).body(renter);
 }
-
 }
-
