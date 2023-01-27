@@ -13,7 +13,7 @@ import java.util.Date;
 @Entity
 public class Vehicle {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.AUTO)
     protected Long id;
     @Column(name="potencia",nullable = false)
     protected Double motor;
@@ -21,6 +21,7 @@ public class Vehicle {
     protected String marca;
     protected Date anoFabricacao;
     protected int numeroPassageiros;
+    @Enumerated(EnumType.STRING)
     protected TipoCombustivel combustivel;
     public static String dizOla(String nome)
     {
