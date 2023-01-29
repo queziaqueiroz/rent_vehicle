@@ -15,6 +15,9 @@ public class Vehicle {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     protected Long id;
+    protected Long rent_id;
+    @Transient
+    protected  Renter rent;
     @Column(name="potencia",nullable = false)
     protected Double motor;
     protected String modelo;

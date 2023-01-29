@@ -1,20 +1,16 @@
 package br.com.quezia.rentvehicle.controllers;
 
-import br.com.quezia.rentvehicle.entities.TipoCombustivel;
 import br.com.quezia.rentvehicle.entities.Vehicle;
+import br.com.quezia.rentvehicle.repositories.RenterRepository;
 import br.com.quezia.rentvehicle.repositories.VehicleRepository;
-import jdk.internal.platform.cgroupv1.SubSystem;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.json.GsonBuilderUtils;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.sql.SQLOutput;
 import java.util.Optional;
 
 @Slf4j
@@ -23,6 +19,8 @@ import java.util.Optional;
 public class VehicleController {
     @Autowired
     private VehicleRepository vehicleRepository;
+    private RenterRepository renterRepository;
+
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getVehicle(@PathVariable("id") long id) {
@@ -35,11 +33,9 @@ public class VehicleController {
 
     @PostMapping()
     public ResponseEntity<?> postVehicle(@RequestBody Vehicle vehicle) {
-        Vehicle newVehicle = vehicleRepository.save(vehicle);
+        Vehicle vehicleFromDatabase = vehicleRepository.save(vehicle);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}").buildAndExpand(newVehicle.getId()).toUri();
+                .path("/{id}").buildAndExpand(vehicleFromDatabase.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 }
-
-

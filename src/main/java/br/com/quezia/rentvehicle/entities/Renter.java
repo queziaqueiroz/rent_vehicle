@@ -15,7 +15,7 @@ public class Renter {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     protected  Long id;
-    protected String nome;
+    protected String name;
     protected String cpf;
     protected String email;
     protected String numeroTelefone;

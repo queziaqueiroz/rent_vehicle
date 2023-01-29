@@ -1,7 +1,6 @@
 package br.com.quezia.rentvehicle.controllers;
 
 import br.com.quezia.rentvehicle.entities.Renter;
-import br.com.quezia.rentvehicle.entities.Vehicle;
 import br.com.quezia.rentvehicle.repositories.RenterRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +32,7 @@ public class RenterController {
         Renter newRenter = renterRepository.save(renter);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(newRenter.getId()).toUri();
-        return ResponseEntity.created(uri).build();}
+        return ResponseEntity.created(uri).build();
+
+}
 }
