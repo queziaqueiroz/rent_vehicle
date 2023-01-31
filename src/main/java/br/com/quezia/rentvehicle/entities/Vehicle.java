@@ -4,7 +4,6 @@ import javax.persistence.*;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import java.util.Date;
 
@@ -15,9 +14,9 @@ public class Vehicle {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     protected Long id;
-    protected Long rent_id;
+    protected Long locator_id;
     @Transient
-    protected  Renter rent;
+    protected Locator locator;
     @Column(name="potencia",nullable = false)
     protected Double motor;
     protected String modelo;

@@ -1,7 +1,7 @@
 package br.com.quezia.rentvehicle.controllers;
 
 import br.com.quezia.rentvehicle.entities.Vehicle;
-import br.com.quezia.rentvehicle.repositories.RenterRepository;
+import br.com.quezia.rentvehicle.repositories.LocatorRepository;
 import br.com.quezia.rentvehicle.repositories.VehicleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import java.util.Optional;
 public class VehicleController {
     @Autowired
     private VehicleRepository vehicleRepository;
-    private RenterRepository renterRepository;
+    private LocatorRepository locatorRepository;
 
 
     @GetMapping("/{id}")
